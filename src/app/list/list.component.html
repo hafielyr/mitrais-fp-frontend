@@ -1,0 +1,11 @@
+<header>
+</header>
+<section>
+  <app-employee-card
+    *ngFor="let employee of employees"
+    [employee]="employee"
+    (delete)="onMediaItemDelete($event)"></app-employee-card>
+</section>
+<footer>
+  
+</footer>
