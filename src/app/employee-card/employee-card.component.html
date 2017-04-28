@@ -1,12 +1,19 @@
+<md-card>
+<div fxLayout="row">
 <a class ="card"(click)="showDetail()">
-<img src="media/04.png" class="icon" />
-<div class="left">
-<h2><b>{{ employee.firstName }} {{ employee.lastName }}</b></h2>
-<div>{{ employee.division }}, {{ employee.subDivision}}</div>
-<div>{{ employee.location}}, {{ employee.phone}}</div>
-</div>
-<div class="right">
-<div>{{ employee.hireDate }}</div>
-</div>
+    <div fxFlex="20">
+        <md-icon class="md-64">person</md-icon>
+    </div>
+    <div fxFlex="55">
+        <md-card-title>{{ employee.firstName }} {{ employee.lastName }}</md-card-title>
+        <md-card-subtitle>{{ employee.division }}, {{ employee.subDivision}}</md-card-subtitle>
+        <md-card-subtitle>{{ employee.location}}, {{ employee.phone}}</md-card-subtitle>
+    </div>
+    <div fxFlex="25">
+        <md-card-content>{{ employee.hireDate }}</md-card-content>
+        <md-icon class="md-32">radio_button_checked</md-icon>
+    </div>
 </a>
+</div>
+</md-card>
 

@@ -1,62 +1,44 @@
-:host {
-  display: block;
-  margin-left: 400px;
-  position: relative;
-  width: 600px;
+.empForm{
 }
-ul {
-  list-style-type: none;
+.md-32{
+    font-size: 32px;
+    padding-top: 10px;
 }
-ul li {
-  margin: 10px 0;
+.footer{
+    background-color: rgb(92,106,192);
+    width: 100%;
+    height: 58px;
 }
-header, label {
-  color: #53ace4;
+.footer button{
+    float:right;
 }
-input, select {
-  background-color: #29394b;
-  color: #c6c5c3;
-  border-radius: 3px;
-  border: none;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2) inset, 0 -1px 0 rgba(0,0,0,0.05) inset;
-  border-color: #53ace4;
-  padding: 6px;
+.footer button[type="submit"]{
+    background-color: rgb(233,28,99);
+    color: #fff;
 }
-.ng-invalid:not(form):not(.ng-pristine):not(.required-invalid) {
-  border: 1px solid #d93a3e;
+.footer button[type="reset"]{
+    background-color: #fff;
+    color: rgb(125,125,125);
 }
-input[required].ng-invalid {
-  border-right: 5px solid #d93a3e;
+.footer button[type="submit"], .footer button[type="reset"]{
+    font-size: 12px;
+    margin: 10px;
 }
-input[required]:not(.required-invalid),
-input[required].ng-invalid:not(.required-invalid) {
-  border-right: 5px solid #37ad79;
+
+.footer button:disabled{
+    cursor: not-allowed;
 }
-.error {
-  color: #d93a3e;
+
+md-input-container, md-select {
+  width: 85%;
 }
-#year {
-  width: 50px;
+md-select{
+    margin: 12px;
 }
-button[type=submit] {
-  background-color: #45bf94;
-  border: 0;
-  padding: 10px;
-  font-size: 1em;
-  border-radius: 4px;
-  color: #ffffff;
-  cursor: pointer;
+md-input-container{
+    margin: 8px;
 }
-button[type=submit]:disabled {
-  background-color: #333;
-  color: #666;
-  cursor: default;
-}
-.left-section{
-  position: relative;
-  float: left;
-}
-.right-section{
-  padding-left: 30px;
-  position: relative;
+md2-datepicker{
+    min-width: 87%;
+    margin-bottom: 8px;
 }

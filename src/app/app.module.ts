@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { MaterialModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FlexLayoutModule} from "@angular/flex-layout";
+import { FlexLayoutModule} from "@angular/flex-layout";
 import { MdToolbarModule} from '@angular/material';
 import { Md2Module }  from 'md2';
 
@@ -35,7 +35,6 @@ import { LocationService } from "app/location.service";
     ReactiveFormsModule,
     HttpModule,
     routing,
-    Angular2FlexModule.forRoot(),
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,

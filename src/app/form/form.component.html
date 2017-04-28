@@ -1,67 +1,107 @@
-<form
-  [formGroup]="form"
-  (ngSubmit)="onSubmit(form.value)">
-  <ul>
-    <li>
-      <label for="firstname">First Name</label>
-      <input type="text" name="firstname" id="firstname" formControlName="firstName">
-    </li>
-    <li>
-      <label for="lastname">Last Name</label>
-      <input type="text" name="lastname" id="lastname" formControlName="lastName">
-    </li>
-    <li>
-      <label for="gender">Gender</label>
-      <select name="gender" id="gender" formControlName="gender">
-        <option *ngFor="let gender of lookupLists.gender" value="{{gender}}">{{gender}}</option>
-      </select>
-    </li>
-    <li>
-      <label for="dob">Date of Birth</label>
-      <input type="date" name="dob" id="dob"formControlName="dob">
-    </li>
-    <li>
-      <label for="nationality">Nationality</label>
-      <input type="text" name="nationality" id="nationality" formControlName="nationality">
-    </li>
-    <li>
-      <label for="married">Marital Status</label>
-      <input type="text" name="married" id="married" formControlName="martial">
-    </li>
-    <li>
-      <label for="phone">Phone</label>
-      <input type="text" name="phone" id="phone" formControlName="phone">
-    </li>
-    <li>
-      <label for="subdivision">Sub Division</label>
-      <input type="text" name="subdivision" id="subdivision" formControlName="subDivision">
-    </li>
-    <li>
-      <label for="status">Status</label>
-      <input type="text" name="status" id="status" formControlName="status">
-    </li>
-    <li>
-      <label for="suspend">Suspend Date</label>
-      <input type="date" name="suspend" id="suspend" formControlName="suspendDate">
-    </li>
-    <li>
-      <label for="hired">Hired date</label>
-      <input type="date" name="hired" id="hired" formControlName="hireDate">
-    </li>
-    <li>
-      <label for="division">Division</label>
-      <input type="text" name="division" id="division" formControlName="division">
-    </li>
-    <li>
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" formControlName="email">
-    </li>
-    <li>
-      <label for="location">Location</label>
-      <select name="location" id="location" formControlName="location">
-        <option *ngFor="let loc of locations" value="{{loc.name}}">{{loc.name}}</option>
-      </select>
-    </li>
-  </ul>
-  <button type="submit" [disabled]="!form.valid">Save</button>
-</form>
+<div class="empform" fxLayout="column">
+  <div fxFlex>
+    <md-tab-group>
+      <md-tab class="tabs">
+        <ng-template md-tab-label>
+          <md-icon class="md-32">person</md-icon>
+        </ng-template>
+        <div>
+          <form
+            [formGroup]="form"
+            (ngSubmit)="onSubmit(form.value)">
+            <div fxLayout="column">
+              <div fxFlex>
+                <div flex layout="row">
+                  <div fxFlex="50">
+                    <md-input-container>
+                      <input type="text" placeholder="first name" mdInput name="firstname" id="firstname" formControlName="firstName">
+                    </md-input-container>
+                    <md-input-container>
+                      <input type="text" placeholder="last name" mdInput name="lastname" id="lastname" formControlName="lastName">
+                    </md-input-container>
+                    <md-select name="gender" placeholder="gender" id="gender" formControlName="gender">
+                      <md-option *ngFor="let gender of lookupLists.gender" value="{{gender}}">{{gender}}</md-option>
+                    </md-select>
+                    <md2-datepicker name="dob" id="dob" mdInput type="date" placeholder="date of birth"  formControlName="dob">
+                    </md2-datepicker>
+                    <md-select type="text" placeholder="nationality" name="nationality" id="nationality" formControlName="nationality">
+                      <md-option *ngFor="let nationality of lookupLists.nationality" value="{{nationality}}">{{nationality}}</md-option>
+                    </md-select>              
+                    <md-select type="text" placeholder="marital status" name="married" id="married" formControlName="martial">
+                      <md-option *ngFor="let mar of lookupLists.marital" value="{{mar}}">{{mar}}</md-option>
+                    </md-select>
+                    <md-input-container>
+                      <input type="text" placeholder="phone" mdInput name="phone" id="phone" formControlName="phone">
+                    </md-input-container>
+                    <md-select id="location" placeholder="location" name="location" id="location" formControlName="location">
+                      <md-option *ngFor="let loc of locations" value="{{loc.id}}">{{loc.name}}</md-option>
+                    </md-select>
+                  </div>
+                  <div fxFlex="50">
+                    <md-input-container>
+                      <input type="text" placeholder="sub-division" mdInput name="subdivision" id="subdivision" formControlName="subDivision">
+                    </md-input-container>
+                    <md-select type="text" placeholder="employment status" name="status" id="status" formControlName="status">
+                        <md-option *ngFor="let status of lookupLists.status" value="{{status}}">{{status}}</md-option>
+                    </md-select>
+                    <md2-datepicker name="suspend" id="suspend" mdInput type="date" placeholder="suspend date" formControlName="suspendDate">
+                    </md2-datepicker>
+                    <md2-datepicker name="hired" id="hired" mdInput type="date" placeholder="hired date"  formControlName="hireDate">
+                    </md2-datepicker>
+                    <md-select type="text" placeholder="grade" name="grade" id="grade" formControlName="grade">
+                      <md-option *ngFor="let grade of lookupLists.grade" value="{{grade}}">{{grade}}</md-option>
+                    </md-select>
+                    <md-input-container>
+                      <input type="text" placeholder="division" mdInput name="division" id="division" formControlName="division">
+                    </md-input-container>
+                    <md-input-container>
+                      <input type="text" placeholder="email" mdInput name="email" id="email" formControlName="email">
+                    </md-input-container>
+                  </div>
+                </div>
+              </div>
+              <div fxFlex>
+                <div class="footer">
+                  <button md-button type="submit" [disabled]="!form.valid">Save</button>
+                  <button md-button type="reset">Reset</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </md-tab>
+      <md-tab class="tabs">
+        <ng-template md-tab-label>
+          <md-icon class="md-32">history</md-icon>
+        </ng-template>
+        Content2
+      </md-tab>
+      <md-tab class="tabs">
+        <ng-template md-tab-label>
+          <md-icon class="md-32">school</md-icon>
+        </ng-template>
+        Content3
+      </md-tab>
+      <md-tab class="tabs">
+        <ng-template md-tab-label>
+          <md-icon class="md-32">people</md-icon>
+        </ng-template>
+        Content4
+      </md-tab>
+      <md-tab class="tabs">
+        <ng-template md-tab-label>
+          <md-icon class="md-32">home</md-icon>
+        </ng-template>
+        Content5
+      </md-tab>
+      <md-tab class="tabs">
+        <ng-template md-tab-label>
+          <md-icon class="md-32">location_on</md-icon>
+        </ng-template>
+        Content6
+      </md-tab>
+    </md-tab-group>
+  </div>
+  <div fxFlex></div>
+  <div fxFlex></div>
+</div>

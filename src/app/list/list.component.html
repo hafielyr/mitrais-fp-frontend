@@ -1,11 +1,32 @@
-<header>
-</header>
-<section>
-  <app-employee-card
-    *ngFor="let employee of employees"
-    [employee]="employee"
-    (delete)="onMediaItemDelete($event)"></app-employee-card>
-</section>
-<footer>
-  
-</footer>
+<div class="card-container">
+  <div class="nav-card">
+    <div fxLayout="row">
+      <div fxFlex="15">
+        <md-icon class="md-24">search</md-icon>
+      </div>
+      <div fxFlex="50">
+        <md-input-container>
+          <input name="search" #search  mdInput placeholder="Search" >
+        </md-input-container>
+      </div>
+      <div fxFlex="35">
+        <div class="toolbar">
+          <a a href="#"><md-icon class="md-16">delete</md-icon></a>
+          <a>
+            <md-icon class="md-16">sort_by_alpha</md-icon>
+          </a>
+          <a href="#">
+          <md-icon class="md-16">filter_list</md-icon>
+          </a>
+            <md-chip>999</md-chip>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="list">
+    <app-employee-card
+      *ngFor="let employee of employees"
+      [employee]="employee"
+      (delete)="onMediaItemDelete($event)"></app-employee-card>
+  </div>
+</div>

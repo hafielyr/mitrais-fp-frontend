@@ -45,7 +45,8 @@ export class FormComponent implements OnInit {
       hireDate: this.formBuilder.control(''),
       division: this.formBuilder.control(''),
       email: this.formBuilder.control(''),
-      location: this.formBuilder.control('')
+      location: this.formBuilder.control(''),
+      grade: this.formBuilder.control('')
     });
   }
 
