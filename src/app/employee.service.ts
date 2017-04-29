@@ -34,4 +34,28 @@ export class EmployeeService {
       .map(response => {});
   }
 
+  update(employee:Employee,id){
+    let url= "/api/employees/"+id;
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(url,JSON.stringify(employee),options)
+    .map(response=>{});
+  }
+  sortasc():Observable<Employee[]>{
+    let url="/api/employees/sortasc";
+    return this.http.get(url)
+    .map(response=>response.json());
+  }
+  sortdesc():Observable<Employee[]>{
+    let url="/api/employees/sortdesc";
+    return this.http.get(url)
+    .map(response=>response.json());
+  }
+  getEmployeesBySearchParameter(name):Observable<Employee[]>{
+    let url=`/api/employees/search?name=${name.target.value}`;
+    let searchParameter=new URLSearchParams();
+    searchParameter.append('name',name.target.value);
+    return this.http.get(url, { search: searchParameter })
+    .map(response=>response.json());
+  }
 }

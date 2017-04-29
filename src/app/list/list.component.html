@@ -6,19 +6,22 @@
       </div>
       <div fxFlex="50">
         <md-input-container>
-          <input name="search" #search  mdInput placeholder="Search" >
+          <input name="search" #search (keyup)="onSearch($event)" mdInput placeholder="Search" >
         </md-input-container>
       </div>
       <div fxFlex="35">
         <div class="toolbar">
-          <a a href="#"><md-icon class="md-16">delete</md-icon></a>
+          <a *ngIf="selectedEmployee" (click)="onDelete()"><md-icon class="md-16">delete</md-icon></a>
           <a>
-            <md-icon class="md-16">sort_by_alpha</md-icon>
+            <md-icon class="md-16" (click)="sortAsc()">sort_by_alpha</md-icon>
+          </a>
+          <a>
+            <md-icon class="md-16" (click)="sortDesc()">sort_by_beta</md-icon>
           </a>
           <a href="#">
           <md-icon class="md-16">filter_list</md-icon>
           </a>
-            <md-chip>999</md-chip>
+            <md-chip>{{employees!=null?employees.length:0}}</md-chip>
         </div>
       </div>
     </div>
@@ -27,6 +30,9 @@
     <app-employee-card
       *ngFor="let employee of employees"
       [employee]="employee"
-      (delete)="onMediaItemDelete($event)"></app-employee-card>
+      (throwEmployee)="getEmployee($event)"></app-employee-card>
   </div>
+  <button md-fab (click)="addEmployee()">
+      <md-icon>add_circle</md-icon>
+    </button>
 </div>

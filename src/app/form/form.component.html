@@ -14,48 +14,63 @@
                 <div flex layout="row">
                   <div fxFlex="50">
                     <md-input-container>
-                      <input type="text" placeholder="first name" mdInput name="firstname" id="firstname" formControlName="firstName">
+                      <input type="text" placeholder="first name" mdInput name="firstname" id="firstname" formControlName="firstName"
+                      [ngModel]="employee?.firstName">
                     </md-input-container>
                     <md-input-container>
-                      <input type="text" placeholder="last name" mdInput name="lastname" id="lastname" formControlName="lastName">
+                      <input type="text" placeholder="last name" mdInput name="lastname" id="lastname" formControlName="lastName"
+                      [ngModel]="employee?.lastName">
                     </md-input-container>
-                    <md-select name="gender" placeholder="gender" id="gender" formControlName="gender">
+                    <md-select name="gender" placeholder="gender" id="gender" formControlName="gender"
+                    [ngModel]="employee?.gender">
                       <md-option *ngFor="let gender of lookupLists.gender" value="{{gender}}">{{gender}}</md-option>
                     </md-select>
-                    <md2-datepicker name="dob" id="dob" mdInput type="date" placeholder="date of birth"  formControlName="dob">
+                    <md2-datepicker name="dob" id="dob" mdInput type="date" placeholder="date of birth"  formControlName="dob"
+                    [ngModel]="employee?.dob">
                     </md2-datepicker>
-                    <md-select type="text" placeholder="nationality" name="nationality" id="nationality" formControlName="nationality">
+                    <md-select type="text" placeholder="nationality" name="nationality" id="nationality" formControlName="nationality"
+                    [ngModel]="employee?.nationality">
                       <md-option *ngFor="let nationality of lookupLists.nationality" value="{{nationality}}">{{nationality}}</md-option>
                     </md-select>              
-                    <md-select type="text" placeholder="marital status" name="married" id="married" formControlName="martial">
+                    <md-select type="text" placeholder="marital status" name="married" id="married" formControlName="marital"
+                    [ngModel]="employee?.marital">
                       <md-option *ngFor="let mar of lookupLists.marital" value="{{mar}}">{{mar}}</md-option>
                     </md-select>
                     <md-input-container>
-                      <input type="text" placeholder="phone" mdInput name="phone" id="phone" formControlName="phone">
+                      <input type="text" placeholder="phone" mdInput name="phone" id="phone" formControlName="phone"
+                      [ngModel]="employee?.phone">
                     </md-input-container>
-                    <md-select id="location" placeholder="location" name="location" id="location" formControlName="location">
-                      <md-option *ngFor="let loc of locations" value="{{loc.id}}">{{loc.name}}</md-option>
+                    <md-select id="location" placeholder="location" name="location" id="location" formControlName="locationId"
+                    [ngModel]="employee?.locationId.id">
+                      <md-option *ngFor="let loc of locations" [value]="loc.id">{{loc.name}}</md-option>
                     </md-select>
                   </div>
                   <div fxFlex="50">
                     <md-input-container>
-                      <input type="text" placeholder="sub-division" mdInput name="subdivision" id="subdivision" formControlName="subDivision">
+                      <input type="text" placeholder="sub-division" mdInput name="subdivision" id="subdivision" formControlName="subDivision"
+                      [ngModel]="employee?.subDivision">
                     </md-input-container>
-                    <md-select type="text" placeholder="employment status" name="status" id="status" formControlName="status">
+                    <md-select type="text" placeholder="employment status" name="status" id="status" formControlName="status"
+                    [ngModel]="employee?.status">
                         <md-option *ngFor="let status of lookupLists.status" value="{{status}}">{{status}}</md-option>
                     </md-select>
-                    <md2-datepicker name="suspend" id="suspend" mdInput type="date" placeholder="suspend date" formControlName="suspendDate">
+                    <md2-datepicker name="suspend" id="suspend" mdInput type="date" placeholder="suspend date" formControlName="suspendDate"
+                    [ngModel]="employee?.suspendDate">
                     </md2-datepicker>
-                    <md2-datepicker name="hired" id="hired" mdInput type="date" placeholder="hired date"  formControlName="hireDate">
+                    <md2-datepicker name="hired" id="hired" mdInput type="date" placeholder="hired date"  formControlName="hireDate"
+                    [ngModel]="employee?.hireDate">
                     </md2-datepicker>
-                    <md-select type="text" placeholder="grade" name="grade" id="grade" formControlName="grade">
+                    <md-select type="text" placeholder="grade" name="grade" id="grade" formControlName="grade"
+                    [ngModel]="employee?.grade">
                       <md-option *ngFor="let grade of lookupLists.grade" value="{{grade}}">{{grade}}</md-option>
                     </md-select>
                     <md-input-container>
-                      <input type="text" placeholder="division" mdInput name="division" id="division" formControlName="division">
+                      <input type="text" placeholder="division" mdInput name="division" id="division" formControlName="division"
+                      [ngModel]="employee?.division">
                     </md-input-container>
                     <md-input-container>
-                      <input type="text" placeholder="email" mdInput name="email" id="email" formControlName="email">
+                      <input type="text" placeholder="email" mdInput name="email" id="email" formControlName="email"
+                      [ngModel]="employee?.email">
                     </md-input-container>
                   </div>
                 </div>
@@ -63,7 +78,7 @@
               <div fxFlex>
                 <div class="footer">
                   <button md-button type="submit" [disabled]="!form.valid">Save</button>
-                  <button md-button type="reset">Reset</button>
+                  <button md-button type="reset">Cancel</button>
                 </div>
               </div>
             </div>

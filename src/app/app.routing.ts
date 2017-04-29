@@ -5,7 +5,7 @@ import { DetailCardComponent } from './detail-card/detail-card.component';
 
 const appRoutes: Routes = [
   
-  { path: 'detail/:id',component: DetailCardComponent},
+  { path: 'employee/:id',component: FormComponent},
   { path: 'add', component: FormComponent },
   { path: '', pathMatch: 'full', redirectTo: 'detail' }
 ];

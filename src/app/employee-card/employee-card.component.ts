@@ -8,14 +8,13 @@ import { Router } from '@angular/router';
 export class EmployeeCardComponent  {
   
   @Input() employee;
-  @Output() delete = new EventEmitter();
+  @Output() throwEmployee = new EventEmitter();
   
   constructor(
     private router: Router){}
-  onDelete() {
-    this.delete.emit(this.employee);
-  }
   showDetail(){
-    this.router.navigate(['/detail',this.employee.id]);
+    this.throwEmployee.emit(this.employee);
+    this.router.navigate(['/employee',this.employee.id]);
+
   }
 }

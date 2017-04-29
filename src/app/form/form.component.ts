@@ -1,12 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 import { EmployeeService } from '../employee.service';
 import { lookupListToken } from '../providers';
 import { Employee } from "app/employee.model";
 import { LocationService } from '../location.service';
 import { Location } from '../location.model';
+import { ReloadpageService} from '../reloadpage.service';
 
 @Component({
   selector: 'app-form',
@@ -16,8 +17,9 @@ import { Location } from '../location.model';
 export class FormComponent implements OnInit {
 
   form;
-  locationId;
-  num:number=1;
+  private employeeId;
+  private employee:Employee;
+  private show:boolean;
   private locations:Location[];
 
   constructor(
@@ -25,9 +27,18 @@ export class FormComponent implements OnInit {
     private employeeService: EmployeeService,
     @Inject(lookupListToken) public lookupLists,
     private router: Router,
-    private locationService: LocationService) {}
+    private locationService: LocationService,
+    private activatedRoute:ActivatedRoute,
+    private reloadpageService: ReloadpageService) {}
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(
+     params=>{
+            if(params['id']){
+              this.employeeId=params['id'];
+            this.getEmployee(params['id']);
+            }
+     });
     this.locationService.get().subscribe(locations=>
       this.locations=locations
     );
@@ -37,7 +48,7 @@ export class FormComponent implements OnInit {
       gender: this.formBuilder.control(''),
       dob: this.formBuilder.control(''),
       nationality: this.formBuilder.control(''),
-      martial: this.formBuilder.control(''),
+      marital: this.formBuilder.control(''),
       phone: this.formBuilder.control(''),
       subDivision: this.formBuilder.control(''),
       status: this.formBuilder.control(''),
@@ -45,21 +56,39 @@ export class FormComponent implements OnInit {
       hireDate: this.formBuilder.control(''),
       division: this.formBuilder.control(''),
       email: this.formBuilder.control(''),
-      location: this.formBuilder.control(''),
+      locationId: this.formBuilder.control(''),
       grade: this.formBuilder.control('')
     });
   }
 
-  onSubmit(employee: Employee) {
-    var jsonLocation={
-        id: this.num
+  onSubmit(employee) {
+    var location = {
+      id: employee.locationId
     }
-    employee.locationId=jsonLocation;
+    employee.locationId=location;
     console.log(JSON.stringify(employee));
+    if(!this.employee){
     this.employeeService.add(employee)
       .subscribe(() => {
         this.router.navigate(['/add']);
+        this.reloadpageService.notifyOther({ option: 'updateList', value: 'updateList' });
       });
+    }else{
+      this.employeeService.update(employee,this.employeeId)
+      .subscribe(()=>{this.router.navigate(['/add']);
+        this.reloadpageService.notifyOther({ option: 'updateList', value: 'updateList' });});
+    }
   }
 
+  getEmployee(id){
+    this.employeeService.getEmployee(id).subscribe(employe=>{
+      this.employee=employe;
+      if(this.employee==null){
+        this.show=false;
+      }
+      else{
+        this.show=true;
+      }
+    });
+  }
 }
