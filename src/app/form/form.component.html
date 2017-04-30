@@ -12,7 +12,7 @@
             <div fxLayout="column">
               <div fxFlex>
                 <div flex layout="row">
-                  <div fxFlex="50">
+                  <div fxFlex="40">
                     <md-input-container>
                       <input type="text" placeholder="first name" mdInput name="firstname" id="firstname" formControlName="firstName"
                       [ngModel]="employee?.firstName">
@@ -45,7 +45,7 @@
                       <md-option *ngFor="let loc of locations" [value]="loc.id">{{loc.name}}</md-option>
                     </md-select>
                   </div>
-                  <div fxFlex="50">
+                  <div fxFlex="40">
                     <md-input-container>
                       <input type="text" placeholder="sub-division" mdInput name="subdivision" id="subdivision" formControlName="subDivision"
                       [ngModel]="employee?.subDivision">
@@ -73,6 +73,15 @@
                       [ngModel]="employee?.email">
                     </md-input-container>
                   </div>
+                  <div fxFlex="20">
+                    <div class="form-img">
+                        <md-icon (click)="fileInput.click()">photo_camera</md-icon>
+                        <img class="img" [src]="uploadURL" (click)="fileInput.click()">
+                    </div>
+                    <input #fileInput  name="photo" id="photo" type="file" 
+                    hidden="hidden" (change)="imgProcess($event)" accept="image/*" 
+                    formControlName="photo"/>
+                  </div>
                 </div>
               </div>
               <div fxFlex>
@@ -84,36 +93,6 @@
             </div>
           </form>
         </div>
-      </md-tab>
-      <md-tab class="tabs">
-        <ng-template md-tab-label>
-          <md-icon class="md-32">history</md-icon>
-        </ng-template>
-        Content2
-      </md-tab>
-      <md-tab class="tabs">
-        <ng-template md-tab-label>
-          <md-icon class="md-32">school</md-icon>
-        </ng-template>
-        Content3
-      </md-tab>
-      <md-tab class="tabs">
-        <ng-template md-tab-label>
-          <md-icon class="md-32">people</md-icon>
-        </ng-template>
-        Content4
-      </md-tab>
-      <md-tab class="tabs">
-        <ng-template md-tab-label>
-          <md-icon class="md-32">home</md-icon>
-        </ng-template>
-        Content5
-      </md-tab>
-      <md-tab class="tabs">
-        <ng-template md-tab-label>
-          <md-icon class="md-32">location_on</md-icon>
-        </ng-template>
-        Content6
       </md-tab>
     </md-tab-group>
   </div>

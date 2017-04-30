@@ -14,7 +14,7 @@ export class EmployeeService {
       .map(response => 
         response.json());
   }
-  getEmployee(employeeId) {
+  getEmployee(employeeId):Observable<Employee> {
     let url= "/api/employees/"+employeeId;
     return this.http.get(url).map(response=>{
       return response.json()

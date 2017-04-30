@@ -21,6 +21,7 @@ export class FormComponent implements OnInit {
   private employee:Employee;
   private show:boolean;
   private locations:Location[];
+  private uploadURL;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +33,7 @@ export class FormComponent implements OnInit {
     private reloadpageService: ReloadpageService) {}
 
   ngOnInit() {
+    
     this.activatedRoute.params.subscribe(
      params=>{
             if(params['id']){
@@ -39,6 +41,7 @@ export class FormComponent implements OnInit {
             this.getEmployee(params['id']);
             }
      });
+     this.uploadURL = '../../../assets/default-user-image.png';
     this.locationService.get().subscribe(locations=>
       this.locations=locations
     );
@@ -57,7 +60,8 @@ export class FormComponent implements OnInit {
       division: this.formBuilder.control(''),
       email: this.formBuilder.control(''),
       locationId: this.formBuilder.control(''),
-      grade: this.formBuilder.control('')
+      grade: this.formBuilder.control(''),
+      photo: this.formBuilder.control('')
     });
   }
 
@@ -83,12 +87,17 @@ export class FormComponent implements OnInit {
   getEmployee(id){
     this.employeeService.getEmployee(id).subscribe(employe=>{
       this.employee=employe;
-      if(this.employee==null){
-        this.show=false;
-      }
-      else{
-        this.show=true;
-      }
+        
     });
+ 
+  }
+
+  imgUpload(img){
+    var image=new FileReader();
+    image.onload= (photo: any)=>{
+      this.uploadURL = photo.target.result;
+    }
+    image.readAsDataURL(img.target.files[0]);
+    
   }
 }

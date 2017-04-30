@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule} from "@angular/flex-layout";
-import { MdToolbarModule} from '@angular/material';
+import {MdToolbarModule, MdDialogModule} from '@angular/material';
 import { Md2Module }  from 'md2';
 
 import { AppComponent } from './app.component';
@@ -22,13 +22,24 @@ import {Angular2FlexModule} from 'angular2-flex';
 import 'rxjs/add/operator/map';
 import { ReloadpageService } from "app/reloadpage.service";
 import { LocationService } from "app/location.service";
+import { DeleteboxComponent } from "app/deletebox.component";
+import { DelboxComponent } from './delbox/delbox.component';
+import { FilterComponent } from './filter/filter.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     FormComponent,
     DetailCardComponent,
-    EmployeeCardComponent
+    EmployeeCardComponent,
+    DeleteboxComponent,
+    DelboxComponent,
+    FilterComponent
+  ],
+   entryComponents:[
+    DelboxComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +50,8 @@ import { LocationService } from "app/location.service";
     MaterialModule,
     FlexLayoutModule,
     MdToolbarModule,
-    Md2Module.forRoot()
+    Md2Module.forRoot(),
+    MdDialogModule
   ],
   providers: [
     EmployeeService,

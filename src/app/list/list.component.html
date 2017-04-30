@@ -18,8 +18,8 @@
           <a>
             <md-icon class="md-16" (click)="sortDesc()">sort_by_beta</md-icon>
           </a>
-          <a href="#">
-          <md-icon class="md-16">filter_list</md-icon>
+          <a>
+          <md-icon class="md-16" (click)="onFilter()">filter_list</md-icon>
           </a>
             <md-chip>{{employees!=null?employees.length:0}}</md-chip>
         </div>

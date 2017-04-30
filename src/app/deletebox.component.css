@@ -1,0 +1,19 @@
+.delete{
+    background-color: black;
+}
+.no, .yes{
+    border: none;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+}
+.yes{
+    float: right;
+    background-color: rgb(233,28,99);
+    color: #fff;
+}
+.no{
+    float: left;
+    background-color: #fff;
+    color: rgb(125,125,125);
+}
