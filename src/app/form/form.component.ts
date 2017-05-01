@@ -21,7 +21,7 @@ export class FormComponent implements OnInit {
   private employee:Employee;
   private show:boolean;
   private locations:Location[];
-  private uploadURL;
+  private uploadURL="";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,25 +42,34 @@ export class FormComponent implements OnInit {
             }
      });
      this.uploadURL = '../../../assets/default-user-image.png';
-    this.locationService.get().subscribe(locations=>
+      this.locationService.get().subscribe(locations=>
       this.locations=locations
     );
     this.form = this.formBuilder.group({
-      firstName: this.formBuilder.control(''),
-      lastName: this.formBuilder.control(''),
-      gender: this.formBuilder.control(''),
-      dob: this.formBuilder.control(''),
-      nationality: this.formBuilder.control(''),
-      marital: this.formBuilder.control(''),
-      phone: this.formBuilder.control(''),
-      subDivision: this.formBuilder.control(''),
-      status: this.formBuilder.control(''),
+      firstName: this.formBuilder.control('' ,Validators.compose([
+        Validators.required,
+        Validators.pattern('[a-zA-Z ]*')
+      ])),
+      lastName: this.formBuilder.control('',Validators.compose([
+        Validators.required,
+        Validators.pattern('[a-zA-Z ]*')
+      ])),
+      gender: this.formBuilder.control('',Validators.required),
+      dob: this.formBuilder.control('',Validators.required),
+      nationality: this.formBuilder.control('',Validators.required),
+      marital: this.formBuilder.control('',Validators.required),
+      phone: this.formBuilder.control('',Validators.compose([
+        Validators.required,
+        Validators.pattern('[0-9\-\+\(\) ]*')
+      ])),
+      subDivision: this.formBuilder.control('',Validators.required),
+      status: this.formBuilder.control('',Validators.required),
       suspendDate: this.formBuilder.control(''),
-      hireDate: this.formBuilder.control(''),
-      division: this.formBuilder.control(''),
-      email: this.formBuilder.control(''),
-      locationId: this.formBuilder.control(''),
-      grade: this.formBuilder.control(''),
+      hireDate: this.formBuilder.control('',Validators.required),
+      division: this.formBuilder.control('',Validators.required),
+      email: this.formBuilder.control('',[Validators.required,Validators.email]),
+      locationId: this.formBuilder.control('',Validators.required),
+      grade: this.formBuilder.control('',Validators.required),
       photo: this.formBuilder.control('')
     });
   }
@@ -70,7 +79,9 @@ export class FormComponent implements OnInit {
       id: employee.locationId
     }
     employee.locationId=location;
-    console.log(JSON.stringify(employee));
+    if(this.uploadURL != "src/images/no-image.png" && this.uploadURL != null){
+      employee.photo = this.uploadURL;
+    }
     if(!this.employee){
     this.employeeService.add(employee)
       .subscribe(() => {
@@ -87,12 +98,18 @@ export class FormComponent implements OnInit {
   getEmployee(id){
     this.employeeService.getEmployee(id).subscribe(employe=>{
       this.employee=employe;
-        
+      if(this.employee.photo==null){
+        this.uploadURL = '../../../assets/default-user-image.png';
+      }
+      else{
+        this.uploadURL=this.employee.photo;
+      }
     });
  
   }
 
   imgUpload(img){
+    this.uploadURL=img.target.files;
     var image=new FileReader();
     image.onload= (photo: any)=>{
       this.uploadURL = photo.target.result;

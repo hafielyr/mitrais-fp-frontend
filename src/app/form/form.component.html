@@ -16,61 +16,115 @@
                     <md-input-container>
                       <input type="text" placeholder="first name" mdInput name="firstname" id="firstname" formControlName="firstName"
                       [ngModel]="employee?.firstName">
+                      <div *ngIf="form.controls.firstName.errors?.pattern" class="error">
+                          First name has invalid characters
+                      </div>
+                      <div *ngIf="form.controls.firstName.errors?.required&&(form.controls.firstName.touched||submitted)" class="error">
+                          First name field is required
+                      </div>
                     </md-input-container>
                     <md-input-container>
                       <input type="text" placeholder="last name" mdInput name="lastname" id="lastname" formControlName="lastName"
                       [ngModel]="employee?.lastName">
+                      <div *ngIf="form.controls.lastName.errors?.pattern" class="error">
+                          First name has invalid characters
+                      </div>
+                      <div *ngIf="form.controls.lastName.errors?.required&&(form.controls.lastName.touched||submitted)" class="error">
+                          Last name field is required
+                      </div>
                     </md-input-container>
                     <md-select name="gender" placeholder="gender" id="gender" formControlName="gender"
                     [ngModel]="employee?.gender">
-                      <md-option *ngFor="let gender of lookupLists.gender" value="{{gender}}">{{gender}}</md-option>
+                      <md-option *ngFor="let gender of lookupLists.gender" value="{{gender}}">{{gender}}</md-option>                      
                     </md-select>
+                    <div *ngIf="form.controls.gender.errors?.required&&(form.controls.gender.touched||submitted)" class="error">
+                          Gender field is required
+                      </div>
                     <md2-datepicker name="dob" id="dob" mdInput type="date" placeholder="date of birth"  formControlName="dob"
                     [ngModel]="employee?.dob">
                     </md2-datepicker>
+                    <div *ngIf="form.controls.dob.errors?.required&&(form.controls.dob.touched||submitted)" class="error">
+                          Date of Birth field is required
+                      </div>
                     <md-select type="text" placeholder="nationality" name="nationality" id="nationality" formControlName="nationality"
                     [ngModel]="employee?.nationality">
                       <md-option *ngFor="let nationality of lookupLists.nationality" value="{{nationality}}">{{nationality}}</md-option>
-                    </md-select>              
+                    </md-select>
+                    <div *ngIf="form.controls.nationality.errors?.required&&(form.controls.nationality.touched||submitted)" class="error">
+                          Nationality field is required
+                      </div>              
                     <md-select type="text" placeholder="marital status" name="married" id="married" formControlName="marital"
                     [ngModel]="employee?.marital">
                       <md-option *ngFor="let mar of lookupLists.marital" value="{{mar}}">{{mar}}</md-option>
                     </md-select>
+                    <div *ngIf="form.controls.marital.errors?.required&&(form.controls.marital.touched||submitted)" class="error">
+                          Marital status field is required
+                      </div>
                     <md-input-container>
                       <input type="text" placeholder="phone" mdInput name="phone" id="phone" formControlName="phone"
                       [ngModel]="employee?.phone">
+                      <div *ngIf="form.controls.phone.errors?.pattern" class="error">
+                          Phone has invalid characters
+                      </div>
+                      <div *ngIf="form.controls.phone.errors?.required&&(form.controls.phone.touched||submitted)" class="error">
+                          Phone field is required
+                      </div>
                     </md-input-container>
                     <md-select id="location" placeholder="location" name="location" id="location" formControlName="locationId"
                     [ngModel]="employee?.locationId.id">
                       <md-option *ngFor="let loc of locations" [value]="loc.id">{{loc.name}}</md-option>
                     </md-select>
+                    <div *ngIf="form.controls.locationId.errors?.required&&(form.controls.locationId.touched||submitted)" class="error">
+                          Location field is required
+                      </div>
                   </div>
                   <div fxFlex="40">
                     <md-input-container>
                       <input type="text" placeholder="sub-division" mdInput name="subdivision" id="subdivision" formControlName="subDivision"
                       [ngModel]="employee?.subDivision">
+                      <div *ngIf="form.controls.subDivision.errors?.required&&(form.controls.subDivision.touched||submitted)" class="error">
+                          sub-division field is required
+                      </div>
                     </md-input-container>
                     <md-select type="text" placeholder="employment status" name="status" id="status" formControlName="status"
                     [ngModel]="employee?.status">
                         <md-option *ngFor="let status of lookupLists.status" value="{{status}}">{{status}}</md-option>
                     </md-select>
+                    <div *ngIf="form.controls.status.errors?.required&&(form.controls.status.touched||submitted)" class="error">
+                          Location field is required
+                      </div>
                     <md2-datepicker name="suspend" id="suspend" mdInput type="date" placeholder="suspend date" formControlName="suspendDate"
                     [ngModel]="employee?.suspendDate">
                     </md2-datepicker>
                     <md2-datepicker name="hired" id="hired" mdInput type="date" placeholder="hired date"  formControlName="hireDate"
                     [ngModel]="employee?.hireDate">
                     </md2-datepicker>
+                    <div *ngIf="form.controls.hireDate.errors?.required&&(form.controls.hireDate.touched||submitted)" class="error">
+                          Hired date field is required
+                      </div>
                     <md-select type="text" placeholder="grade" name="grade" id="grade" formControlName="grade"
                     [ngModel]="employee?.grade">
                       <md-option *ngFor="let grade of lookupLists.grade" value="{{grade}}">{{grade}}</md-option>
                     </md-select>
+                    <div *ngIf="form.controls.grade.errors?.required&&(form.controls.grade.touched||submitted)" class="error">
+                          Grade field is required
+                      </div>
                     <md-input-container>
                       <input type="text" placeholder="division" mdInput name="division" id="division" formControlName="division"
                       [ngModel]="employee?.division">
+                      <div *ngIf="form.controls.division.errors?.required&&(form.controls.division.touched||submitted)" class="error">
+                          Division field is required
+                      </div>
                     </md-input-container>
                     <md-input-container>
                       <input type="text" placeholder="email" mdInput name="email" id="email" formControlName="email"
                       [ngModel]="employee?.email">
+                      <div *ngIf="form.controls.email.errors?.required&&(form.controls.email.touched||submitted)" class="error">
+                          Email field is required
+                      </div>
+                      <div *ngIf="form.controls.email.errors?.email&&(form.controls.email.touched||submitted)" class="error">
+                          Email is invalid
+                      </div>
                     </md-input-container>
                   </div>
                   <div fxFlex="20">
@@ -79,7 +133,7 @@
                         <img class="img" [src]="uploadURL" (click)="fileInput.click()">
                     </div>
                     <input #fileInput  name="photo" id="photo" type="file" 
-                    hidden="hidden" (change)="imgProcess($event)" accept="image/*" 
+                    hidden="hidden" (change)="imgUpload($event)" accept="image/*" 
                     formControlName="photo"/>
                   </div>
                 </div>

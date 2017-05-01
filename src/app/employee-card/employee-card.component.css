@@ -17,3 +17,14 @@ md-card-subtitle, md-card-content{
 .card{
 width: 100%;
 }
+.img-card {
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+}
+.card-container:hover{
+    background-color: lightblue;
+}
+.card-selected{
+    background-color: lightblue;
+}

@@ -29,3 +29,7 @@ md-input-container{
 a{
     cursor: pointer;
 }
+.not-found{
+    padding:30px;
+    background: lightgray;
+}

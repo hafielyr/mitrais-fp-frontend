@@ -1,18 +1,18 @@
-<md-card>
+<md-card class="card-container" [ngClass]="{ 'card-selected': employee == selectedEmployee}">
 <div fxLayout="row">
-<a class ="card"(click)="showDetail()">
-    <div fxFlex="20">
-        <md-icon class="md-64">person</md-icon>
-    </div>
-    <div fxFlex="55">
-        <md-card-title>{{ employee.firstName }} {{ employee.lastName }}</md-card-title>
-        <md-card-subtitle>{{ employee.division }}, {{ employee.subDivision}}</md-card-subtitle>
-        <md-card-subtitle>{{ employee.locationId.name}}, {{ employee.phone}}</md-card-subtitle>
-    </div>
-    <div fxFlex="25">
-        <md-card-content>{{ employee.hireDate }}</md-card-content>
-        <md-icon class="md-32">radio_button_checked</md-icon>
-    </div>
+<a class ="card" (click)="showDetail()">
+        <div fxFlex="20">
+            <img class="img-card" [src]="getImage()">
+        </div>
+        <div fxFlex="55">
+            <md-card-title>{{ employee.firstName }} {{ employee.lastName }}</md-card-title>
+            <md-card-subtitle>{{ employee.division }}, {{ employee.subDivision}}</md-card-subtitle>
+            <md-card-subtitle>{{ employee.locationId.name}}, {{ employee.phone}}</md-card-subtitle>
+        </div>
+        <div fxFlex="25">
+            <md-card-content>{{ employee.hireDate }}</md-card-content>
+            <md-icon class="md-32">radio_button_checked</md-icon>
+        </div>
 </a>
 </div>
 </md-card>

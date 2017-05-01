@@ -42,3 +42,13 @@ md2-datepicker{
     min-width: 87%;
     margin-bottom: 8px;
 }
+.img {
+    float: left;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+.error{
+   padding-left:10px;
+}

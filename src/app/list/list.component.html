@@ -30,11 +30,12 @@
     <app-employee-card
       *ngFor="let employee of employees"
       [employee]="employee"
+      [selectedEmployee]="selectedEmployee"
       (throwEmployee)="getEmployee($event)"></app-employee-card>
   </div>
   <div *ngIf="!found">
-    <div class="tablecell">
-        We couldn't find what you're looking for
+    <div class="not-found">
+        We couldn't find what you were looking for
     </div>
   </div>
   <button md-fab (click)="addEmployee()">
