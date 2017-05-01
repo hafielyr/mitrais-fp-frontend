@@ -18,7 +18,9 @@ export class ListComponent implements OnInit {
   private employees:Employee[];
   private subscription: Subscription;
   private selectedEmployee: Employee;
-
+  locationFilter = "";
+  genderFilter = "";
+  found=true;
   constructor(
     private employeeService: EmployeeService,
     private reloadpageService: ReloadpageService,
@@ -29,6 +31,7 @@ export class ListComponent implements OnInit {
     ) {}  
 
   ngOnInit() {
+    this.found=true;
     this.selectedEmployee=null;
     this.getMediaItems();
     this.subscription=this.reloadpageService.notifyObservable$.subscribe(res=>{
@@ -70,21 +73,43 @@ export class ListComponent implements OnInit {
     
   }
   onFilter(){
-    this.filterdialog.open(FilterComponent);
+    let open = this.filterdialog.open(FilterComponent);
+    open.afterClosed().subscribe(result=>{
+      if(result!=undefined)
+      if(result.action=="filter"){
+        this.locationFilter = result.locValue;
+        this.genderFilter = result.genderValue;
+        this.employeeService.getFilteredEmployees(this.locationFilter,this.genderFilter).subscribe(employees=>{
+          this.employees=employees;
+          if(this.employees.length==0){
+          this.found=false;
+          }else{
+          this.found=true;
+          }
+        });
+      } 
+    });
   }
   addEmployee(){
     this.selectedEmployee=null;
     this.router.navigate(['/add']);
   }
   sortAsc(){
+    this.found=true;
     this.employeeService.sortasc().subscribe(employees=>this.employees=employees);
   }
   sortDesc(){
+    this.found=true;
     this.employeeService.sortdesc().subscribe(employees=>this.employees=employees);
   }
   onSearch(parameter){
     this.employeeService.getEmployeesBySearchParameter(parameter).subscribe(employees=>{
       this.employees=employees;
+      if(this.employees.length==0){
+        this.found=false;
+      }else{
+        this.found=true;
+      }
     });
   }
 }

@@ -13,10 +13,10 @@
         <div class="toolbar">
           <a *ngIf="selectedEmployee" (click)="onDelete()"><md-icon class="md-16">delete</md-icon></a>
           <a>
-            <md-icon class="md-16" (click)="sortAsc()">sort_by_alpha</md-icon>
+            <md-icon class="md-16" (click)="sortAsc()">keyboard_arrow_up</md-icon>
           </a>
           <a>
-            <md-icon class="md-16" (click)="sortDesc()">sort_by_beta</md-icon>
+            <md-icon class="md-16" (click)="sortDesc()">keyboard_arrow_down</md-icon>
           </a>
           <a>
           <md-icon class="md-16" (click)="onFilter()">filter_list</md-icon>
@@ -26,11 +26,16 @@
       </div>
     </div>
   </div>
-  <div class="list">
+  <div *ngIf="found" class="list">
     <app-employee-card
       *ngFor="let employee of employees"
       [employee]="employee"
       (throwEmployee)="getEmployee($event)"></app-employee-card>
+  </div>
+  <div *ngIf="!found">
+    <div class="tablecell">
+        We couldn't find what you're looking for
+    </div>
   </div>
   <button md-fab (click)="addEmployee()">
       <md-icon>add_circle</md-icon>

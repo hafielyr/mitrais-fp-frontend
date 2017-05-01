@@ -58,4 +58,20 @@ export class EmployeeService {
     return this.http.get(url, { search: searchParameter })
     .map(response=>response.json());
   }
+  getFilteredEmployees(locationId,gender){
+    if(locationId===""){
+      locationId="null";
+    }
+    if(gender===""){
+      gender="null";
+    }
+    let url=`/api/employees/filter?gender=${gender}&locationId=${locationId}`;
+    let searchParameter=new URLSearchParams();
+    searchParameter.append('gender',gender);
+    searchParameter.append('locationId',locationId);
+    return this.http.get(url,{search:searchParameter})
+    .map(response=>{
+      return response.json();
+    });
+  }
 }

@@ -12,7 +12,6 @@ import { Md2Module }  from 'md2';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
-import { DetailCardComponent } from './detail-card/detail-card.component';
 import { EmployeeCardComponent } from './employee-card/employee-card.component';
 
 import {EmployeeService} from './employee.service'
@@ -31,7 +30,6 @@ import { FilterComponent } from './filter/filter.component';
     AppComponent,
     ListComponent,
     FormComponent,
-    DetailCardComponent,
     EmployeeCardComponent,
     DeleteboxComponent,
     DelboxComponent,

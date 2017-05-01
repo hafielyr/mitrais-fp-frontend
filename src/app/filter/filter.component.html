@@ -1,12 +1,16 @@
 <div class="fdialog">
     <p>Filter by:</p>
-    <p>
+
     <md-select name="gender" id="gender" placeholder="gender">
-      <md-option *ngFor="let g of lookupListToken.gender"   [value]="g">{{ g }}</md-option>
+      <md-option *ngFor="let g of lookupListToken.gender" (click)="filterGender(g)"  [value]="g">{{ g }}</md-option>
     </md-select>
     <md-select name="location" id="location" placeholder="location">
-      <md-option *ngFor="let l of locations"  (click)="filterLocation(l.locid)"  [value]="l.id">{{ l.name }}</md-option>
+      <md-option *ngFor="let l of locations"  (click)="filterLocation(l.id)"  [value]="l.id">{{ l.name }}</md-option>
     </md-select>
-    </p>
+    <div md-dialog-actions id="actions">
+    <button md-button (click)="filterdialog.close({action:'filter',locValue:location,genderValue:gender})">Filter</button>
+    <button md-button (click)="filterdialog.close({action:'cancel'})">Cancel</button>
+      </div>
+
     
 </div>
