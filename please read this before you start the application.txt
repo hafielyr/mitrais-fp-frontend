@@ -1,1 +1,3 @@
-some of the data first initiation is not containing gender, and several fields.
+the data first initiation is not containing gender, and several fields.
+you need to update the data of employee through the application before you can use the filter properly.
+this application is best used in google chrome.
