@@ -14,6 +14,7 @@ export class Employee{
         public status :string,
         public suspendDate :Date,
         public hireDate :Date,
+        public grade:string,
         public division :string,
         public email :string,
         public photo :string,

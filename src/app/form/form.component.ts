@@ -85,12 +85,12 @@ export class FormComponent implements OnInit {
     if(!this.employee){
     this.employeeService.add(employee)
       .subscribe(() => {
-        this.router.navigate(['/add']);
+        this.router.navigate(['']);
         this.reloadpageService.notifyOther({ option: 'updateList', value: 'updateList' });
       });
     }else{
       this.employeeService.update(employee,this.employeeId)
-      .subscribe(()=>{this.router.navigate(['/add']);
+      .subscribe(()=>{this.router.navigate(['']);
         this.reloadpageService.notifyOther({ option: 'updateList', value: 'updateList' });});
     }
   }

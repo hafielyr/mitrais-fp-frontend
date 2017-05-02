@@ -1,1 +1,1 @@
-the data first initiation is not containing gender, and several fields. you need to edit the employee data thorugh the application before you want to use filter with gender.
+some of the data first initiation is not containing gender, and several fields.
